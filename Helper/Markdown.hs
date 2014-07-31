@@ -1,8 +1,9 @@
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module Helper.Markdown where
 
 import Prelude
 
-import Data.Text.Lazy (Text, toStrict, fromStrict)
+import Data.Text.Lazy (toStrict, fromStrict)
 import Database.Persist.Sql
 import Text.Markdown
 import qualified Data.Text.Lazy as TL
