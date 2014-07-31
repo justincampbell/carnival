@@ -8,11 +8,8 @@ import Database.Persist.Sql
 import Text.Markdown
 import qualified Data.Text.Lazy as TL
 
-instance Show Markdown where
-    show (Markdown t) = show t
-
-instance Eq Markdown where
-    Markdown a == Markdown b = a == b
+deriving instance Eq Markdown
+deriving instance Show Markdown
 
 instance PersistField Markdown where
     toPersistValue (Markdown t) = PersistText $ toStrict t
