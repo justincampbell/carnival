@@ -8,9 +8,12 @@ import Database.Persist.Quasi
 import Data.Typeable (Typeable)
 import Network.Gravatar
 
-import Yesod.Markdown
+import Text.Blaze.Html(toMarkup)
 import Text.Blaze.Renderer.String
+import Text.Markdown
 import qualified Data.Text as T
+
+import Helper.Markdown
 
 share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"]
     $(persistFileWith lowerCaseSettings "config/models")
@@ -45,4 +48,4 @@ instance ToJSON UserComment where
         ]
 
 renderMarkdown :: Comment -> Text
-renderMarkdown = T.pack . renderMarkup . markdownToHtml . commentBody
+renderMarkdown = T.pack . renderMarkup . toMarkup . commentBody
