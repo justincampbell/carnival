@@ -1,4 +1,11 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
+-- |
+--
+-- This module supplies (orphan) instances for Markdown allowing it to be used
+-- as a field type with persistent. These instances are also supplied in the
+-- yesod-text-markdown package on Hackage, but it's dependencies are such that
+-- we can't install it at this time.
+--
 module Helper.Markdown where
 
 import Prelude
@@ -6,7 +13,6 @@ import Prelude
 import Data.Text.Lazy (toStrict, fromStrict)
 import Database.Persist.Sql
 import Text.Markdown
-import qualified Data.Text.Lazy as TL
 
 deriving instance Eq Markdown
 deriving instance Show Markdown
@@ -19,6 +25,3 @@ instance PersistField Markdown where
 
 instance PersistFieldSql Markdown where
     sqlType _ = SqlString
-
-unMarkdown :: Markdown -> TL.Text
-unMarkdown (Markdown t) = t

@@ -12,8 +12,9 @@ import Text.Blaze.Html(toMarkup)
 import Text.Blaze.Renderer.String
 import Text.Markdown
 import qualified Data.Text as T
+import qualified Data.Text.Lazy as TL
 
-import Helper.Markdown
+import Helper.Markdown ()
 
 share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"]
     $(persistFileWith lowerCaseSettings "config/models")
@@ -46,6 +47,9 @@ instance ToJSON UserComment where
         , "body"         .= (unMarkdown $ commentBody c)
         , "body_html"    .= (String $ renderMarkdown c)
         ]
+
+unMarkdown :: Markdown -> TL.Text
+unMarkdown (Markdown t) = t
 
 renderMarkdown :: Comment -> Text
 renderMarkdown = T.pack . renderMarkup . toMarkup . commentBody
