@@ -22,11 +22,11 @@ library
                      Settings.StaticFiles
                      Settings.Development
                      Session
+                     Text.Markdown.Instances
                      Helper.Auth
                      Helper.Request
                      Helper.Comment
                      Helper.Heroku
-                     Helper.Markdown
                      Handler.Session
                      Handler.Comments
                      Handler.Comment

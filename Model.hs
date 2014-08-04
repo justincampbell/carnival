@@ -10,11 +10,11 @@ import Network.Gravatar
 
 import Text.Blaze.Html(toMarkup)
 import Text.Blaze.Renderer.String
-import Text.Markdown
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
 
-import Helper.Markdown ()
+import Text.Markdown (Markdown(..))
+import Text.Markdown.Instances ()
 
 share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"]
     $(persistFileWith lowerCaseSettings "config/models")

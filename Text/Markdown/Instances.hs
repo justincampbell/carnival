@@ -3,10 +3,10 @@
 --
 -- This module supplies (orphan) instances for Markdown allowing it to be used
 -- as a field type with persistent. These instances are also supplied in the
--- yesod-text-markdown package on Hackage, but it's dependencies are such that
--- we can't install it at this time.
+-- yesod-text-markdown package on Hackage, but its dependencies are such that we
+-- can't install it at this time.
 --
-module Helper.Markdown where
+module Text.Markdown.Instances where
 
 import Prelude
 
